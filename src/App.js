@@ -1,49 +1,40 @@
 import React, { Component } from "react";
 import './App.css';
-
-class Content extends Component {
-  render() {
-    return (
-      <article>
-        <h2>HTML</h2>
-        HTML is HyperText Markup Language.
-      </article>
-    )
-  }
-}
-
-class TOC extends Component {
-  render() {
-    return (
-      <nav>
-        <ul class="li"><a href="1.html">HTML</a></ul>
-        <ul class="li"><a href="2.html">CSS</a></ul>
-        <ul class="li"><a href="3.html">JavaScript </a></ul>
-      </nav>
-    )
-  }
-}
-
-class Subject extends Component {
-  render() {
-    return (
-      <header>
-        <h1>
-          WEB
-        </h1>
-        world wild web
-      </header>
-    );
-  }
-}
+import TOC from "./components/TOC"
+import Content from "./components/Content"
+import Subject from "./components/Subject"
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mode: "read",
+      welcome: { title: "Welcome", desc: "Hello, React!!" },
+      subject: { title: "WEB", sub: "world wide web" },
+      contents: [
+        { id: 1, title: "HTML", desc: "HTML is for information" },
+        { id: 2, title: "CSS", desc: "CSS is for information" },
+        { id: 3, title: "JacaScript", desc: "JacaScript is for information" }
+      ]
+    }
+  }
   render() {
+    console.log("App render")
+    var _title, _desc = null;
+    if (this.state.mode == "welcome") {
+      _title = this.state.welcome.title;
+      _desc = this.state.welcome.desc;
+    } else if (this.state.mode == "read") {
+      _title = this.state.contents[0].title;
+      _desc = this.state.contents[0].desc;
+    }
     return (
       <div className="App">
-        <Subject></Subject>
-        <TOC></TOC>
-        <Content></Content>
+        <Subject
+          title={this.state.subject.title}
+          sub={this.state.subject.sub}></Subject>
+        <TOC data={this.state.contents}></TOC>
+        <Content title={_title} desc={_desc}></Content>
       </div>
     );
   }
