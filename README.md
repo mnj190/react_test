@@ -6,7 +6,6 @@
 2) npm run build --> 사용된 기능만 포함하여 용량이 작다. 배포 시 사용
 
 ## Component
-
 * 컴포넌트 생산 시 하나의 최상위 태그만 사용
 
 ## JSX
@@ -39,6 +38,27 @@
 ## bind
     * render안의 함수 안에서 this 호출 시 this는 window or undefined
     * this.function_name.bind(this); 사용 시 함수의 this는 bind의 값
+    * 두 번째 인자를 첫 번째 매개변수의 값으로 전달
 
 ## setState
     동적으로 state 변경 시 setState를 사용해야지 변경 후 리로딩
+
+## data-name
+    e.target.dataset.name 으로 접근
+
+## Props VS State
+    ### Props
+        * props are read only
+        * props can no be modified
+
+    ### State
+        * state changes can be asynchronous
+        * state can be modified using this.setState
+
+## 데이터 전달 
+    ### 상위 컴포넌트 -> 하위 컴포넌트
+        * props로 데이터 전달
+
+    ### 하위 컴포넌트 -> 상위 컴포넌트
+    1. 상위 컴포넌트에 onChangePage로 함수 등록 (이벤트 구현)
+    2. 하위 컴포넌트에서 onChangePage 호출 (매개변수 전달) / setState로 상탠 변경

@@ -34,6 +34,7 @@ class App extends Component {
           _desc = data.desc;
           break;
         }
+        i++;
       }
 
     }
@@ -47,9 +48,10 @@ class App extends Component {
               mode: "welcome"
             })
           }.bind(this)}></Subject>
-        <TOC onChangePage={function () {
+        <TOC onChangePage={function (id) {
           this.setState({
-            mode: "read"
+            mode: "read",
+            selected_content_id: Number(id)
           })
         }.bind(this)} data={this.state.contents}></TOC>
         <Content title={_title} desc={_desc}></Content>
