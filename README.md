@@ -19,4 +19,26 @@
     ### 컴포너틑 클래스에서 JSX로 데이터 출력
 
 ## React Developer Tool
-    리액트로 작성된 페이지의 컴포넌트 확인
+    리액트로 작성된 페이지의 컴포넌트 확인, 수정 가능
+
+## Constructor
+    컴포넌트 사용시 가장먼저 실행되어 초기화 담당
+
+## State
+    외부에서 스테이트 값을 알 수 없다. (은닉성)
+    스테이트의 값을 컴포넌트의 props의 값으로 사용
+
+## Tag Option
+    * onClick
+    * preventDefault
+    * onChangePage
+
+## debugger
+    디버거 실행 시 동작 정지
+
+## bind
+    * render안의 함수 안에서 this 호출 시 this는 window or undefined
+    * this.function_name.bind(this); 사용 시 함수의 this는 bind의 값
+
+## setState
+    동적으로 state 변경 시 setState를 사용해야지 변경 후 리로딩
