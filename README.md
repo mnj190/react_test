@@ -31,7 +31,7 @@
 ## Tag Option
     * onClick
     * preventDefault
-    * onChangePage
+    * onChangePage - 클릭 시 호출할 함수 등록
 
 ## debugger
     디버거 실행 시 동작 정지
