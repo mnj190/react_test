@@ -62,3 +62,5 @@
     ### 하위 컴포넌트 -> 상위 컴포넌트
     1. 상위 컴포넌트에 onChangePage로 함수 등록 (이벤트 구현)
     2. 하위 컴포넌트에서 onChangePage 호출 (매개변수 전달) / setState로 상탠 변경
+
+## contributions test
