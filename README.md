@@ -31,6 +31,7 @@
     * onClick
     * preventDefault
     * onChangePage - 클릭 시 호출할 함수 등록
+    * onSubmit - submit 시 작동
 
 ## debugger
     디버거 실행 시 동작 정지
@@ -64,3 +65,12 @@
     2. 하위 컴포넌트에서 onChangePage 호출 (매개변수 전달) / setState로 상탠 변경
 
 ## contributions test
+
+## State push
+    this.state.push(props) ==> this.setState({content: this.state.content})
+    var content = this.state.concat(props) ==> this.setState({content:content})
+
+## push VS concat
+    array.push(val) = 원본을 수정
+    array.concat(val) : 추가한 배열을 생성 
+    * 가급적 원본을 변경하지 않고 새로운 값을 생성할 것!!!

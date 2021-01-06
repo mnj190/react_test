@@ -9,8 +9,9 @@ import CreateContent from "./components/CreateContent";
 class App extends Component {
   constructor(props) {
     super(props);
+    this.max_content_id = 3;
     this.state = {
-      mode: "read",
+      mode: "create",
       selected_content_id: 2,
       welcome: { title: "Welcome", desc: "Hello, React!!" },
       subject: { title: "WEB", sub: "world wide web" },
@@ -40,8 +41,17 @@ class App extends Component {
         i++;
       }
       _acticle = <ReadContent title={_title} desc={_desc}></ReadContent>;
-    } else if(this.state.mode === "create") {
-      _acticle = <CreateContent></CreateContent>
+    } else if (this.state.mode === "create") {
+      _acticle = <CreateContent onSubmit={function (_title, _desc) {
+        console.log(_title, _desc);
+        this.max_content_id++;
+        var content = this.state.contents.concat(
+          { id: this.max_content_id, title: _title, desc: _desc }
+        )
+        this.setState({
+          contents: content
+        });
+      }.bind(this)}></CreateContent>
     }
     return (
       <div className="App">
