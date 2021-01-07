@@ -5,6 +5,7 @@ import ReadContent from "./components/ReadContent"
 import Control from "./components/Control"
 import Subject from "./components/Subject"
 import CreateContent from "./components/CreateContent";
+import UpdateContent from "./components/UpdateContent";
 
 class App extends Component {
   constructor(props) {
@@ -22,7 +23,20 @@ class App extends Component {
       ]
     }
   }
-  render() {
+
+  getReadContent() {
+    var i = 0;
+    while (i < this.state.contents.length) {
+      var data = this.state.contents[i];
+      if (data.id === this.state.selected_content_id) {
+        return data;
+        break;
+      }
+      i++;
+    }
+  }
+
+  getContent() {
     console.log("App render")
     var _title, _desc, _acticle = null;
     if (this.state.mode === "welcome") {
@@ -30,16 +44,7 @@ class App extends Component {
       _desc = this.state.welcome.desc;
       _acticle = <ReadContent title={_title} desc={_desc}></ReadContent>;
     } else if (this.state.mode === "read") {
-      var i = 0;
-      while (i < this.state.contents.length) {
-        var data = this.state.contents[i];
-        if (data.id === this.state.selected_content_id) {
-          _title = data.title;
-          _desc = data.desc;
-          break;
-        }
-        i++;
-      }
+      var _content = this.getReadContent();
       _acticle = <ReadContent title={_title} desc={_desc}></ReadContent>;
     } else if (this.state.mode === "create") {
       _acticle = <CreateContent onSubmit={function (_title, _desc) {
@@ -52,7 +57,24 @@ class App extends Component {
           contents: content
         });
       }.bind(this)}></CreateContent>
+    } else if (this.state.mode === "update") {
+      _content = this.getReadContent();
+      _acticle = <UpdateContent data={_content} onSubmit={function (_title, _desc) {
+        console.log(_title, _desc);
+        this.max_content_id++;
+        var content = this.state.contents.concat(
+          { id: this.max_content_id, title: _title, desc: _desc }
+        )
+        this.setState({
+          contents: content
+        });
+      }.bind(this)}></UpdateContent>
     }
+    return _acticle;
+  }
+
+  render() {
+
     return (
       <div className="App">
         <Subject
@@ -75,7 +97,7 @@ class App extends Component {
           })
         }.bind(this)}></Control>
 
-        {_acticle}
+        {this.getContent()}
 
       </div>
     );

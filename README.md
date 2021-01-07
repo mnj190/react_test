@@ -73,4 +73,15 @@
 ## push VS concat
     array.push(val) = 원본을 수정
     array.concat(val) : 추가한 배열을 생성 
-    * 가급적 원본을 변경하지 않고 새로운 값을 생성할 것!!!
+    * 가급적 원본을 변경하지 않고 새로운 값을 생성할 것!!! ===> shouldComponentUpdate를 통해 this와 new 비교
+
+## shouldComponentUpdate
+    return true; ==> render() 호출
+    return false; ==> render() 호출 X
+    매개변수 newProps, newState 
+
+## immutable.js (?)
+
+## JS
+    Array.from(x) : 배열을 각 요소마다 x를 실행 / 배열 복제
+    Object.assign(new, target) : 객체 복제
