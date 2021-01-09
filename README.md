@@ -85,3 +85,21 @@
 ## JS
     Array.from(x) : 배열을 각 요소마다 x를 실행 / 배열 복제
     Object.assign(new, target) : 객체 복제
+
+## Array.from(ele)
+    배열 복제
+
+
+## CRUD
+    ###delete ==> _contents.splice(i,1);
+
+
+## 과제
+    ### immutable
+        immutable.js
+    ### router
+        server
+    ### npm run eject
+    ### redux
+    ### react server side rendering
+    
